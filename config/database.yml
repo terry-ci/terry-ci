@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: terryci
+  password: terryci
+  pool: 5
+
+development:
+  <<: *default
+  database: terry-ci_development
+test:
+  <<: *default
+  database: terry-ci_test
+
+#     url: <%= ENV['DATABASE_URL'] %>
+production:
+  <<: *default
+  database: terry-ci_production
+  username: terry-ci
+  password: <%= ENV['TERRY-CI_DATABASE_PASSWORD'] %>
