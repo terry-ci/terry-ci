@@ -21,9 +21,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <% if user_signed_in? %>
+          <li>
             <%= link_to "Projects", projects_path %>
-        </li>
+          </li>
+          <li>
+            Hello <%= current_user.email %>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path(), method: 'DELETE' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign in with Bitbucket", user_omniauth_authorize_path(:bitbucket) %>
+          </li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
