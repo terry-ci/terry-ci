@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  
+
   get 'home/index'
   get 'wall/index'
+  get 'profile/:id' => 'profile#show', as: 'profile'
 
   resources :repositories
 

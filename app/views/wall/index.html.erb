@@ -10,10 +10,10 @@
 <ul class="list-group" >
   <% @repositories.each do |repository|  %>
   <li class="list-group-item">
-    <%= fa_stacked_icon repository.provider+" inverse", base: 'circle' %>
+    <%= fa_stacked_icon repository.provider+" ", base: 'circle-thin' %>
     <input type="checkbox" <%= 'checked' if repository.active %> data-toggle="toggle" data-onstyle="success">
     <%= link_to repository.name, repository %>
-    <a href="#">
+    <a href="#" class="pull-right">
       <%= fa_icon 'gear' %>
     </a>
   </li>

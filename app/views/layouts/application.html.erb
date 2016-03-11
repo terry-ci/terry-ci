@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>TerryCi</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -30,7 +30,9 @@
               <span class="caret"></span>
             </a>
             <ul id="menu" class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
+            <li>
+              <%= link_to "Profile", profile_path(current_user) %>
+            </li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Logout", destroy_user_session_path(), method: 'DELETE' %></li>
             </ul>
