@@ -18,6 +18,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'simple_form'
 gem 'devise'
 gem 'omniauth-bitbucket'
+gem 'tinybucket', :github => 'dvbeato/tinybucket', :branch => 'update-rails-dependencies'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'

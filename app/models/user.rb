@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable,
         :omniauthable, :omniauth_providers => [:bitbucket]
 
-  has_many :projects
+  has_many :repositories
+
+  def avatar_url
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png"
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

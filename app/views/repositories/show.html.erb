@@ -1,0 +1,55 @@
+<% unless @repository.active %>
+  <div class="alert alert-warning">
+    <i class="fa fa-exclamation-triangle"></i>
+    This repository is not activated!
+  </div>
+<% end %>
+<h1><%= fa_stacked_icon @repository.provider+" inverse", base: 'circle' %><%= @repository.name %></h1>
+
+<div id="repository">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#current" aria-controls="current" role="tab" data-toggle="tab">Current</a>
+    </li>
+    <li role="presentation">
+      <a href="#pull-requests" aria-controls="pull-requests" role="tab" data-toggle="tab">Pull Requests</a>
+    </li>
+    <li role="presentation">
+      <a href="#build-history" aria-controls="build-history" role="tab" data-toggle="tab">Build History</a>
+    </li>
+    <li role="presentation">
+      <a href="#containers" aria-controls="containers" role="tab" data-toggle="tab">Containers</a>
+    </li>
+    <li role="presentation">
+      <a href="#settings" aria-controls="containers" role="tab" data-toggle="tab">Settings</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="current">
+      <h1>Current</h1>
+      <p>show builds running</p>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="pull-requests">
+      <h1>Pull Requests</h1>
+      <p>show open pull requests</p>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="build-history">
+      <h1>Build History</h1>
+      <p>show build history</p>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="containers">
+      <h1>Containers</h1>
+      <p>show running containers</p>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+      <h1>Settings</h1>
+      <p>show settings</p>
+      <input type="checkbox" <%= "checked" if @repository.active %> data-toggle="toggle" data-onstyle="success">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+
+
+  <h2>Repositories
+    <button class="btn btn-success pull-right">
+      <i class="fa fa-refresh"></i>
+      Sync
+    </button>
+  </h2>
+
+<ul class="list-group" >
+  <% @repositories.each do |repository|  %>
+  <li class="list-group-item">
+    <%= fa_stacked_icon repository.provider+" inverse", base: 'circle' %>
+    <input type="checkbox" <%= 'checked' if repository.active %> data-toggle="toggle" data-onstyle="success">
+    <%= link_to repository.name, repository %>
+    <a href="#">
+      <%= fa_icon 'gear' %>
+    </a>
+  </li>
+  <% end %>
+</ul>

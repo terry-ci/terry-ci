@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  resources :projects
+  
   get 'home/index'
+  get 'wall/index'
+
+  resources :repositories
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+  devise_scope :user do
+    authenticated :user do
+      root to: 'wall#index', as: :wall
+    end
+
+    unauthenticated do
+      root to: 'home#index'
+    end
+  end
+
   # devise_scope :user do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end

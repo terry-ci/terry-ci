@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>TerryCi</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,13 +24,16 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "Projects", projects_path %>
-          </li>
-          <li>
-            Hello <%= current_user.email %>
-          </li>
-          <li>
-            <%= link_to "Logout", destroy_user_session_path(), method: 'DELETE' %>
+            <a href="#" data-target="menu" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.email %>
+              <img class="img-circle" src="<%= current_user.avatar_url %>" alt="<%= current_user.email %>" width="24">
+              <span class="caret"></span>
+            </a>
+            <ul id="menu" class="dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Logout", destroy_user_session_path(), method: 'DELETE' %></li>
+            </ul>
           </li>
         <% else %>
           <li>
@@ -46,5 +50,6 @@
 </div>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
 </body>
 </html>
