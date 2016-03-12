@@ -1,13 +1,18 @@
-<% unless @repository.active %>
-  <div class="alert alert-warning">
-    <i class="fa fa-exclamation-triangle"></i>
-    This repository is not activated!
-  </div>
-<% end %>
-<h1><%= fa_stacked_icon @repository.provider+" inverse", base: 'circle' %><%= @repository.name %></h1>
 
-<div id="repository">
+<div class="col-md-4">
+  <%= render "/repositories/list", repositories: current_user.repositories %>
+</div>
 
+<div id="repository" class="col-md-8">
+
+  <% unless @repository.active %>
+      <div class="alert alert-warning">
+        <i class="fa fa-exclamation-triangle"></i>
+        This repository is not activated!
+      </div>
+  <% end %>
+
+  <h1><%= fa_stacked_icon @repository.provider+" inverse", base: 'circle' %><%= @repository.name %></h1>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
@@ -34,21 +39,16 @@
       <p>show builds running</p>
     </div>
     <div role="tabpanel" class="tab-pane" id="pull-requests">
-      <h1>Pull Requests</h1>
-      <p>show open pull requests</p>
+      <%= render "/pull-requests/list" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="build-history">
-      <h1>Build History</h1>
-      <p>show build history</p>
+      <%= render "/builds/list" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="containers">
-      <h1>Containers</h1>
-      <p>show running containers</p>
+      <%= render "/containers/list" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="settings">
-      <h1>Settings</h1>
-      <p>show settings</p>
-      <input type="checkbox" <%= "checked" if @repository.active %> data-toggle="toggle" data-onstyle="success">
+      <%= render "/repositories/settings" %>
     </div>
   </div>
 
