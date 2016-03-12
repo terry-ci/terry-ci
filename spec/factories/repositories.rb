@@ -1,10 +1,10 @@
 FactoryGirl.define do
 
   factory :repository do
-    name Faker::Company.name
+    name { Faker::Company.name }
     active {[true,false].sample}
     provider { ["bitbucket", "github"].sample }
-    url "http://github.com/mystring/mystring"
+    url {Faker::Internet.url("#{provider}.com")}
     user
   end
 
