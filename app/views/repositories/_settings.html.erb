@@ -1,3 +1,20 @@
 <h1>Settings</h1>
 <p>show settings</p>
-<input type="checkbox" <%= "checked" if @repository.active %> data-toggle="toggle" data-onstyle="success">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Active</h3>
+  </div>
+  <div class="panel-body">
+     <%= f.check_box :active, :checked => @repository.active, :data => { :toggle => "toggle", :onstyle => "success" } %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Host</h3>
+  </div>
+  <div class="panel-body">
+     <%= f.select :host_id, @hosts.collect {|host| [ host.url, host.id] } ,{}, { :class =>  "form-control"} %>
+  </div>
+</div>
+

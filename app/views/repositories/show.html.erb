@@ -13,6 +13,8 @@
   <% end %>
 
   <h1><%= fa_stacked_icon @repository.provider+" inverse", base: 'circle' %><%= @repository.name %></h1>
+  
+  <%= form_for @repository do |f| %>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
@@ -48,8 +50,13 @@
       <%= render "/containers/list" %>
     </div>
     <div role="tabpanel" class="tab-pane" id="settings">
-      <%= render "/repositories/settings" %>
+      <%= render :partial => "/repositories/settings", :locals => { :f => f } %>
     </div>
   </div>
-
+  <div>
+      <div class="form-group">
+          <%= f.submit "Save" , :class => "btn btn-default" %>
+      </div>
+  </div>
+  <% end %> 
 </div>
