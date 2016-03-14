@@ -36,13 +36,14 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="current">
       <h1>Current</h1>
-      <p>show builds running</p>
+      <%= render "/builds/list", builds: @repository.builds_running %>
     </div>
     <div role="tabpanel" class="tab-pane" id="pull-requests">
-      <%= render "/pull-requests/list" %>
+      <%= render "/pull-requests/list", pull_requests: @repository.pull_requests %>
     </div>
     <div role="tabpanel" class="tab-pane" id="build-history">
-      <%= render "/builds/list" %>
+      <h1>Build History</h1>
+      <%= render "/builds/list", builds: @repository.build_history %>
     </div>
     <div role="tabpanel" class="tab-pane" id="containers">
       <%= render "/containers/list" %>

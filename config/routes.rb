@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   devise_scope :user do
+    post 'users/sync_repositories'
     authenticated :user do
       root to: 'wall#index', as: :wall
     end

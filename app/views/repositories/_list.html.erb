@@ -1,8 +1,9 @@
 <h2>Repositories
-  <button class="btn btn-success pull-right">
+
+  <%= link_to users_sync_repositories_path, method: "POST", class: "btn btn-success pull-right" do %>
     <i class="fa fa-refresh"></i>
     Sync
-  </button>
+  <% end %>
 </h2>
 
 <ul class="list-group" >

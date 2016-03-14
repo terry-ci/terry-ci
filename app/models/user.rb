@@ -26,4 +26,9 @@ class User < ActiveRecord::Base
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def sync_repositories
+    RepositorySync.fake_sync(self)
+  end
+
 end

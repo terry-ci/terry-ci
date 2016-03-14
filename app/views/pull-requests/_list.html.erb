@@ -1,2 +1,5 @@
 <h1>Pull Requests</h1>
-<p>show pull reqests</p>
+
+<% pull_requests.each do |pull_request| %>
+  <p> <%= image_tag avatar(pull_request.user, 26), class: "img-circle" %>  <%= pull_request.user.name %> - <%= pull_request.title %></p>
+<% end %>
