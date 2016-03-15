@@ -7,7 +7,7 @@ class RepositoriesController < ApplicationController
 
   def update
     @repository.host = Host.find params[:repository][:host_id]
-    @repository.active = params[:repository][:ative]
+    @repository.active = params[:repository][:active]
     @repository.save
     redirect_to repository_path
   end

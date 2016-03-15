@@ -1,14 +1,7 @@
-<h1>Settings</h1>
-<p>show settings</p>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Active</h3>
-  </div>
-  <div class="panel-body">
-     <%= f.check_box :active, :checked => @repository.active, :data => { :toggle => "toggle", :onstyle => "success" } %>
-  </div>
-</div>
-
+<%= form_for @repository do |f| %>
+<h1>Settings
+  <div class = "pull-right"><%= f.check_box :active, :checked => @repository.active, :data => { :toggle => "toggle", :onstyle => "success" } %> </div>
+</h1>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Host</h3>
@@ -17,4 +10,27 @@
      <%= f.select :host_id, @hosts.collect {|host| [ host.url, host.id] } ,{}, { :class =>  "form-control"} %>
   </div>
 </div>
-
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Docker Config</h3>
+  </div>
+  <div class="input-group panel-body">
+    <span class="input-group-addon" id="docker_user">User</span>
+    <input type="text" class="form-control" placeholder="Username" aria-describedby="docker_user">
+  </div>
+  <div class="input-group panel-body">
+    <span class="input-group-addon" id="docker_password">Password</span>
+    <input type="password" class="form-control" placeholder="Password" aria-describedby="docker_password">
+  </div>
+  <div class="input-group panel-body">
+    <span class="input-group-addon" id="basic-addon1">Docker Images</span>
+    <select class="form-control" placeholder="Password" >
+      <option value="volvo">bluesoftbr/erp</option>
+      <option value="volvo">bluesoftbr/acelerato</option>
+    </select>
+  </div>
+</div>
+<div class="form-group pull-right">
+  <%= f.submit "Save" , :class => "btn btn-default" %>
+</div>
+<% end %>
